@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+:root {
+  /* Base */
+  --background: #05070A; /* primary deep background */
+  --background-alt: #0A0F14; /* secondary background */
+  --foreground: #E6EDF3;
+
+  /* Text */
+  --text-primary: #E6EDF3;
+  --text-secondary: #9AA6B2;
+  --text-muted: #6B7680;
+
+  /* Surfaces */
+  --panel: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.08);
+
+  /* Accents */
+  --accent-logic: #6AE3FF;     /* Logic */
+  --accent-empathy: #9B8CFF;   /* Empathy */
+  --accent-creativity: #F472B6;/* Creativity */
+  --accent-progress: #4ADE80;  /* Progress */
+
+  /* Fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Deprecated/neon removed */
+  /* (intentionally omitted neon, glow-heavy tokens) */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #05070A;
+    --background-alt: #0A0F14;
+    --foreground: #E6EDF3;
+  }
+}
+
+/* Base */
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui;
+}
+
+/* Remove heavy overlays */
+body::before, body::after {
+  content: none;
+}
+
+/* Panels - calm glass */
+.panel {
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+/* Soft border focus; no heavy glow */
+.glow-soft {
+  box-shadow: 0 0 0 1px var(--border) inset;
+}
+
+/* Typography rhythm - premium, calm */
+.h1 { font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.15; font-weight: 700; letter-spacing: -0.01em; }
+.h2 { font-size: clamp(1.25rem, 2.2vw, 1.75rem); line-height: 1.25; font-weight: 600; }
+.body { font-size: 1rem; line-height: 1.75; color: var(--text-secondary); }
+.label { font-size: 0.75rem; letter-spacing: 0.12em; color: var(--text-muted); text-transform: uppercase; }
+
+/* Motion - slow, purposeful */
+@keyframes breathe {
+  0%, 100% { transform: none; opacity: 0.95; }
+  50% { transform: translateY(-0.5px); opacity: 1; }
+}
+.breathe-slow { animation: breathe 12s ease-in-out infinite; }
+
+/* Spacing - generous, consistent */
+.r-space { padding: 1.5rem; }
+.r-gap { gap: 1.25rem; }
+.section-space { padding-block: 2.5rem; }
+
+/* Utility surfaces */
+.glass {
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+.glass-strong {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+/* Remove/neutralize arcade/neon styles */
+.glow, .glow-cyan, .glow-violet, .glow-green, .gradient-text, .scanlines, .neon-border, .pulse-neon, .float-slow, .float-md {
+  display: none !important;
+}
+
+/* Page container baseline */
+.page-shell {
+  position: relative;
+  z-index: 2; /* above overlays */
+}
+
+/* Focus management: one visual focus per page via accent underline */
+.focus-anchor {
+  position: relative;
+  color: var(--text-primary);
+}
+.focus-anchor::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 56px; height: 2px;
+  background: var(--accent-logic);
+  opacity: 0.6;
+}
+
+/* Accent usage helpers (limited, purposeful) */
+.text-logic { color: var(--accent-logic); }
+.text-empathy { color: var(--accent-empathy); }
+.text-creativity { color: var(--accent-creativity); }
+.text-progress { color: var(--accent-progress); }
+
+.border-soft { border: 1px solid var(--border); }
+.bg-alt { background: var(--background-alt); }
+.bg-panel { background: var(--panel); }
+
+/* Ambient 3D tone-down hints (used by components) */
+:root {
+  --r3f-brightness: 0.75; /* reduce brightness */
+  --r3f-speed: 0.6;       /* slow interactions */
+}
