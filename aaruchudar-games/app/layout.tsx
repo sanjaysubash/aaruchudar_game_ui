@@ -75,7 +75,7 @@ export default function RootLayout({
                   alt="Aaruchudar company logo"
                   className="select-none"
                 />
-                <strong className="text-yellow-400 tracking-wide">Aaruchudar brain games</strong>
+                <strong className="brand-text-match">Aaruchudar brain games</strong>
               </div>
               <p className="mt-3">© {new Date().getFullYear()} Aaruchudar – Fun, Colorful Brain Training</p>
             </div>

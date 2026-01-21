@@ -68,7 +68,7 @@ export default function GamesPage() {
   return (
     <div className="section-space r-space r-gap">
       <header className="mb-6">
-        <h1 className="text-4xl sm:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-fuchsia-300 to-amber-300">Games</h1>
+        <h1 className="brand-text-match text-4xl sm:text-5xl font-extrabold">Games</h1>
         <p className="mt-2 text-sm text-white/85">Pick a tile, earn XP, collect badges. Sessions are quick and punchy.</p>
       </header>
 

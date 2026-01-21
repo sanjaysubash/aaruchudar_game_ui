@@ -127,7 +127,7 @@ export default function SolarBackground() {
           ))}
 
           {/* User rotation controls; zoom/pan off for background */}
-          <OrbitControls enableZoom={false} enablePan={false} enableDamping dampingFactor={0.06} rotateSpeed={0.4} />
+          <OrbitControls enableZoom={!isMobile} enablePan={false} enableDamping dampingFactor={0.06} rotateSpeed={0.4} minDistance={isMobile ? undefined : 8} maxDistance={isMobile ? undefined : 14} />
 
           <Environment preset="city" />
         </Suspense>

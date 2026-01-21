@@ -61,9 +61,10 @@ export default function BrainJarCanvas({
 }) {
   const brightness = getCssVarNumber("--r3f-brightness", 0.75);
   const speed = getCssVarNumber("--r3f-speed", 0.6);
+  const isMobile = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(max-width: 640px)").matches;
 
   if (variant === "background") {
-    const camPos = cameraPosition ?? [2.2, 1.7, 2.6];
+    const camPos = cameraPosition ?? (isMobile ? [2.2, 1.7, 2.6] : [2.0, 1.6, 2.2]);
     const theFov = fov ?? 45;
     const scale = modelScale ?? 1.3;
     const y = offsetY ?? 0.06; // slight lift for better centering
@@ -80,7 +81,7 @@ export default function BrainJarCanvas({
           </Suspense>
           {isInteractive && (
             <OrbitControls
-              enableZoom={enableZoom ?? false}
+              enableZoom={enableZoom ?? !isMobile}
               zoomSpeed={zoomSpeed ?? 1.5}
               enablePan={false}
               enableDamping
@@ -89,6 +90,8 @@ export default function BrainJarCanvas({
               autoRotateSpeed={0.18 * speed}
               minPolarAngle={Math.PI / 3.2}
               maxPolarAngle={Math.PI / 1.8}
+              minDistance={isMobile ? undefined : 1.6}
+              maxDistance={isMobile ? undefined : 3.2}
             />
           )}
         </Canvas>
@@ -97,7 +100,7 @@ export default function BrainJarCanvas({
   }
 
   // panel (default) variant
-  const camPos = cameraPosition ?? [1.8, 1.5, 2.1];
+  const camPos = cameraPosition ?? (isMobile ? [1.8, 1.5, 2.1] : [1.6, 1.4, 1.8]);
   const theFov = fov ?? 45;
   const scale = modelScale ?? 1.35;
   const y = offsetY ?? 0.06;
@@ -112,7 +115,7 @@ export default function BrainJarCanvas({
           <SceneModel scale={scale} offsetY={y} />
         </Suspense>
         <OrbitControls
-          enableZoom={enableZoom ?? false}
+          enableZoom={enableZoom ?? !isMobile}
           zoomSpeed={zoomSpeed ?? 1.6}
           enablePan={false}
           enableDamping
@@ -121,6 +124,8 @@ export default function BrainJarCanvas({
           autoRotateSpeed={0.2 * speed}
           minPolarAngle={Math.PI / 3.2}
           maxPolarAngle={Math.PI / 1.8}
+          minDistance={isMobile ? undefined : 1.4}
+          maxDistance={isMobile ? undefined : 3.0}
         />
       </Canvas>
     </div>

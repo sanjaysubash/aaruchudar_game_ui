@@ -186,3 +186,38 @@ img, svg, canvas, video { max-width: 100%; height: auto; }
 
 /* Ensure page content sits above background visuals */
 .page-shell { position: relative; z-index: 2; }
+
+/* Brand title styling: uppercase, gold color, 3D black shadow */
+.brand-text {
+  text-transform: uppercase !important;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: #FFD700 !important; /* base gold */
+  /* textured gold foil effect using layered gradients */
+  background-image:
+    linear-gradient(180deg, #FFF1A6 0%, #FFD700 35%, #E6B800 65%, #B38F00 100%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.12) 0 6px, rgba(0,0,0,0.08) 6px 12px);
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+  /* subtle stroke to sharpen edges */
+  -webkit-text-stroke: 0.6px #2a1b00;
+  /* deeper layered shadows to simulate 3D depth */
+  text-shadow:
+    1px 1px 0 #000,
+    2px 2px 0 #000,
+    3px 3px 0 #000,
+    4px 4px 2px rgba(0,0,0,0.9),
+    6px 6px 8px rgba(0,0,0,0.85);
+  /* extra depth */
+  filter: drop-shadow(0 8px 10px rgba(0,0,0,0.6));
+}
+
+/* Brand text match to logo color */
+.brand-text-match {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #f59e0b; /* amber-500 close to logo yellow */
+  text-shadow: 1px 1px 0 #00000066, 2px 2px 6px rgba(0,0,0,0.5);
+}

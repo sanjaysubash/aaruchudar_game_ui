@@ -26,7 +26,7 @@ export default function Header() {
       <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2" aria-label="Aaruchudar brain games home">
           <Image src={logoImg} width={28} height={28} alt="Aaruchudar company logo" className="select-none" />
-          <strong className="text-yellow-400 text-sm tracking-wide">Aaruchudar brain games</strong>
+          <strong className="brand-text text-sm">Aaruchudar brain games</strong>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm text-[var(--text-muted)]">
           {links.map((l) => (
