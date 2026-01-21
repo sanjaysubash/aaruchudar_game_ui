@@ -1,10 +1,12 @@
+import type { ReactNode } from "react";
+
 export type IntelligenceType = "Logic" | "EQ" | "Creativity" | "Memory" | "Speed";
 export type Difficulty = "Low" | "Medium" | "High";
 
 export interface GameMeta {
-  tag: ReactNode;
-  subtitle: ReactNode;
-  cover: string | Blob | undefined;
+  tag?: ReactNode;
+  subtitle?: ReactNode;
+  cover?: string | Blob;
   reason?: any;
   tagline?: any;
   id: string;
