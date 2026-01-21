@@ -1,13 +1,13 @@
 import { cn } from "./utils";
 
-type Variant = "cyan" | "violet" | "green" | "magenta" | "blue";
+// Variants align with theme accents
+type Variant = "logic" | "empathy" | "creativity" | "progress";
 
 const variantBg: Record<Variant, string> = {
-  cyan: "bg-[var(--neon-cyan)]",
-  violet: "bg-[var(--neon-violet)]",
-  green: "bg-[var(--neon-green)]",
-  magenta: "bg-[var(--neon-magenta)]",
-  blue: "bg-[var(--neon-blue)]",
+  logic: "bg-[var(--accent-logic)]",
+  empathy: "bg-[var(--accent-empathy)]",
+  creativity: "bg-[var(--accent-creativity)]",
+  progress: "bg-[var(--accent-progress)]",
 };
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
   className?: string;
 }
 
-export default function ProgressBar({ value, label, variant = "cyan", className }: Props) {
+export default function ProgressBar({ value, label, variant = "logic", className }: Props) {
   const pct = Math.max(0, Math.min(100, value));
   return (
     <div className={cn("w-full", className)}>
@@ -28,9 +28,9 @@ export default function ProgressBar({ value, label, variant = "cyan", className 
         </div>
       )}
       <div className="relative h-2 w-full overflow-hidden rounded">
-        <div className="absolute inset-0 glass border-neon" />
+        <div className="absolute inset-0 glass border-soft" />
         <div
-          className={cn("relative h-full shadow-[0_0_12px_currentColor]", variantBg[variant])}
+          className={cn("relative h-full", variantBg[variant])}
           style={{ width: `${pct}%` }}
         />
       </div>

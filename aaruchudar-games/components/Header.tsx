@@ -4,12 +4,16 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import SoundBadge from "@/components/SoundBadge";
+import Image from "next/image";
+import logoImg from "../app/welcome/logo2.png";
 
 const links = [
+  { href: "/welcome", label: "Welcome" },
   { href: "/games", label: "Games" },
   { href: "/leaderboard", label: "Leaderboard" },
   { href: "/profile", label: "Profile" },
   { href: "/about", label: "About" },
+  { href: "/brain-solar-system", label: "Brain Solar System" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -20,15 +24,16 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-20 glass border-soft">
       <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="text-sm font-semibold tracking-wide text-[var(--text-primary)] hover:text-[var(--text-secondary)]">
-          aaruchudar
+        <Link href="/" className="flex items-center gap-2" aria-label="Aaruchudar brain games home">
+          <Image src={logoImg} width={28} height={28} alt="Aaruchudar company logo" className="select-none" />
+          <strong className="text-yellow-400 text-sm tracking-wide">Aaruchudar brain games</strong>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm text-[var(--text-muted)]">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className={pathname.startsWith(l.href) ? "text-[var(--text-primary)]" : "hover:text-[var(--text-secondary)]"}
+              className={pathname.startsWith(l.href) ? "text-[var(--text-primary)]" : "hover:text-[var(--text-primary)]"}
             >
               {l.label}
             </Link>
@@ -45,7 +50,7 @@ export default function Header() {
         <div className="md:hidden border-t border-[rgba(148,163,184,0.18)]">
           <div className="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-3">
             {links.map((l) => (
-              <Link key={l.href} href={l.href} className={pathname.startsWith(l.href) ? "text-[var(--text-primary)]" : "text-[var(--text-muted)]"} onClick={() => setOpen(false)}>
+              <Link key={l.href} href={l.href} className={pathname.startsWith(l.href) ? "text-[var(--text-primary)]" : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"} onClick={() => setOpen(false)}>
                 {l.label}
               </Link>
             ))}

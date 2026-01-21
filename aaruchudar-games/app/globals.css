@@ -10,12 +10,14 @@
   --text-primary: #E6EDF3;
   --text-secondary: #9AA6B2;
   --text-muted: #6B7680;
+  /* Alias to support legacy usages in components */
+  --color-muted: var(--text-muted);
 
   /* Surfaces */
   --panel: rgba(255, 255, 255, 0.04);
   --border: rgba(255, 255, 255, 0.08);
 
-  /* Accents */
+  /* Accents (limited, purposeful) */
   --accent-logic: #6AE3FF;     /* Logic */
   --accent-empathy: #9B8CFF;   /* Empathy */
   --accent-creativity: #F472B6;/* Creativity */
@@ -25,8 +27,8 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* Deprecated/neon removed */
-  /* (intentionally omitted neon, glow-heavy tokens) */
+  /* Layout: mobile nav reservation */
+  --bottom-nav-height: 64px; /* default bottom nav height */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,6 +48,7 @@ body {
   background: var(--background);
   color: var(--text-primary);
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui;
+  padding-bottom: var(--bottom-nav-height);
 }
 
 /* Remove heavy overlays */
@@ -61,6 +64,15 @@ body::before, body::after {
   border: 1px solid var(--border);
   border-radius: 16px;
 }
+
+/* Card surface */
+.card {
+  background: rgba(255,255,255,0.035);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.card-hover { transition: transform 200ms ease, box-shadow 200ms ease; }
+.card-hover:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,0.18); }
 
 /* Soft border focus; no heavy glow */
 .glow-soft {
@@ -99,11 +111,6 @@ body::before, body::after {
   border: 1px solid var(--border);
 }
 
-/* Remove/neutralize arcade/neon styles */
-.glow, .glow-cyan, .glow-violet, .glow-green, .gradient-text, .scanlines, .neon-border, .pulse-neon, .float-slow, .float-md {
-  display: none !important;
-}
-
 /* Page container baseline */
 .page-shell {
   position: relative;
@@ -136,6 +143,46 @@ body::before, body::after {
 
 /* Ambient 3D tone-down hints (used by components) */
 :root {
-  --r3f-brightness: 0.75; /* reduce brightness */
-  --r3f-speed: 0.6;       /* slow interactions */
+  --r3f-brightness: 0.65; /* dimmer for ambient intelligence */
+  --r3f-speed: 0.5;       /* slower interactions */
 }
+
+/* Mobile safe-area reservations */
+@supports (padding: max(0px)) {
+  body {
+    /* Reserve space for fixed bottom nav + iOS safe area */
+    padding-bottom: max(var(--bottom-nav-height), env(safe-area-inset-bottom));
+  }
+}
+
+/* Improve tap targets and spacing on small screens */
+@media (max-width: 640px) {
+  .r-space { padding: 1rem; }
+  .r-gap { gap: 1rem; }
+  .section-space { padding-block: 1.75rem; }
+
+  /* Ensure buttons/links have comfortable touch size */
+  a, button { min-height: 44px; }
+
+  /* Avoid overly small labels */
+  .label { font-size: 0.78rem; }
+}
+
+/* Responsive media defaults */
+img, svg, canvas, video { max-width: 100%; height: auto; }
+
+/* Containers */
+.container { width: 100%; }
+
+/* Reduce hover-only effects on touch devices */
+@media (hover: none) {
+  .card-hover:hover { transform: none; box-shadow: none; }
+}
+
+/* Account for keyboard on mobile: avoid fixed overlays eating space */
+@supports (height: 100dvh) {
+  html, body { height: 100dvh; }
+}
+
+/* Ensure page content sits above background visuals */
+.page-shell { position: relative; z-index: 2; }

@@ -51,13 +51,12 @@ export default function LeaderboardPage() {
                       initial={{ opacity: 0, y: 6 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
-                      transition={{ duration: 0.25 }}
+                      transition={{ duration: 0.3 }}
                       className={
                         "relative grid grid-cols-[80px_1fr_160px] items-center px-3 py-3 rounded-md border " +
-                        (isMe ? "border-[var(--neon-cyan)]/60 bg-white/5" : "border-[rgba(148,163,184,0.18)]")
+                        (isMe ? "border-[var(--accent-logic)]/50 bg-white/5" : "border-[rgba(148,163,184,0.18)]")
                       }
                     >
-                      {isMe && <span className="absolute -inset-[1px] rounded-md blur-md opacity-40" style={{ background: "linear-gradient(90deg, var(--neon-cyan), transparent)" }} />}
                       <div className="relative z-10 text-sm">{i + 1}</div>
                       <div className="relative z-10">
                         <div className="text-sm">{r.name} <span className="text-[var(--color-muted)]">{r.handle}</span></div>

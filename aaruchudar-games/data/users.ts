@@ -18,6 +18,7 @@ export interface IntelligenceDimensions {
 }
 
 export interface UserProfile {
+  nextXp: number;
   id: string;
   name: string;
   handle: string;
@@ -50,6 +51,7 @@ export const me: UserProfile = {
   rank: 42,
   rankName: "Explorer",
   progress: 68,
+  nextXp: 3000,
   dimensions: { logic: 62, empathy: 54, creativity: 71 },
   badges: [
     { id: "b_logic", name: "Logic Adept", color: "var(--accent-logic)" },

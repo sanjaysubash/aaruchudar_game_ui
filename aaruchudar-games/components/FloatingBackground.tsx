@@ -2,11 +2,11 @@
 
 // Configurable floating background with adjustable intensity, density/scale, base tint, and icon sets
 export default function FloatingBackground({
-  intensity = "normal", // lighter | normal | darker
-  tile = 64, // px size of each repeating tile; smaller = denser, larger = roomier
+  intensity = "lighter", // lighter | normal | darker
+  tile = 72, // px size of each repeating tile; smaller = denser, larger = roomier
   baseTint = "deep", // "deep" | "warm" | any CSS color string
   icons = "classic", // "classic" | "gamer"
-  opacity = 0.4, // overall layer opacity
+  opacity = 0.25, // overall layer opacity
 }: {
   intensity?: "lighter" | "normal" | "darker";
   tile?: number;
@@ -15,16 +15,16 @@ export default function FloatingBackground({
   opacity?: number;
 } = {}) {
   const shades = {
-    lighter: { color: "#F9E89C", strokeOpacity: 0.16 },
-    normal: { color: "#F5D76E", strokeOpacity: 0.18 },
-    darker: { color: "#D4B846", strokeOpacity: 0.24 },
+    lighter: { color: "#F9E89C", strokeOpacity: 0.12 },
+    normal: { color: "#F5D76E", strokeOpacity: 0.16 },
+    darker: { color: "#D4B846", strokeOpacity: 0.2 },
   } as const;
 
   const { color: strokeColor, strokeOpacity } =
-    shades[intensity as keyof typeof shades] ?? shades.normal;
+    shades[intensity as keyof typeof shades] ?? shades.lighter;
 
   // Scale stroke width with tile so visuals stay consistent across sizes
-  const strokeWidth = (1.25 * tile) / 64;
+  const strokeWidth = (1.1 * tile) / 64;
 
   const baseColor =
     baseTint === "deep"
@@ -103,7 +103,7 @@ export default function FloatingBackground({
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 -z-10 opacity-50"
+      className="pointer-events-none fixed inset-0 -z-10"
       style={{
         backgroundColor: baseColor,
         backgroundImage: `url(${pattern})`,

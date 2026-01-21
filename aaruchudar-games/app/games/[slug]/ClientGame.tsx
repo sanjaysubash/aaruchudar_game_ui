@@ -38,7 +38,7 @@ export default function ClientGame({ game }: { game: GameMeta }) {
     <div className="min-h-[calc(100vh-4rem)] mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 py-6 md:py-8">
       <div className="grid lg:grid-cols-[1fr_320px] gap-6">
         {/* Game viewport */}
-        <div className="relative rounded-xl overflow-hidden glass-strong border-neon min-h-[60vh]">
+        <div className="relative rounded-xl overflow-hidden glass-strong border-soft min-h-[60vh]">
           {/* HUD Top Bar */}
           <div className="absolute left-0 right-0 top-0 p-3 flex items-center justify-between">
             <div className="inline-flex items-center gap-2 text-[11px] tracking-widest text-[var(--color-muted)]">
@@ -46,8 +46,8 @@ export default function ClientGame({ game }: { game: GameMeta }) {
               {game.title.toUpperCase()}
             </div>
             <div className="flex items-center gap-4">
-              <div className="inline-flex items-center gap-1 glass border-neon rounded px-2 py-1"><Clock3 className="h-3.5 w-3.5" /> {time}s</div>
-              <div className="inline-flex items-center gap-1 glass border-neon rounded px-2 py-1"><Trophy className="h-3.5 w-3.5" /> {score}</div>
+              <div className="inline-flex items-center gap-1 glass border-soft rounded px-2 py-1"><Clock3 className="h-3.5 w-3.5" /> {time}s</div>
+              <div className="inline-flex items-center gap-1 glass border-soft rounded px-2 py-1"><Trophy className="h-3.5 w-3.5" /> {score}</div>
             </div>
           </div>
 
@@ -55,7 +55,7 @@ export default function ClientGame({ game }: { game: GameMeta }) {
           <div className="h-full grid place-items-center p-6">
             <motion.div
               className="relative h-64 w-64 rounded-xl grid place-items-center"
-              style={{ boxShadow: `0 0 0 1px rgba(255,255,255,0.06) inset, 0 0 48px ${game.heroColor || 'var(--neon-cyan)'}30`, background: "radial-gradient(closest-side, rgba(255,255,255,0.06), transparent)" }}
+              style={{ boxShadow: `0 0 0 1px rgba(255,255,255,0.06) inset, 0 0 24px ${(game.heroColor || 'var(--accent-logic)')}26`, background: "radial-gradient(closest-side, rgba(255,255,255,0.06), transparent)" }}
               initial={{ scale: 0.98, opacity: 0.9 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -68,14 +68,13 @@ export default function ClientGame({ game }: { game: GameMeta }) {
               >
                 TAP +10
               </NeonButton>
-              <div className="absolute inset-0 rounded-xl neon-border" />
             </motion.div>
             <div className="mt-4 text-[11px] tracking-widest text-[var(--color-muted)]">Feedback: Progress increases calmly</div>
           </div>
 
           {/* HUD Bottom */}
           <div className="absolute left-0 right-0 bottom-0 p-4">
-            <ProgressBar value={progress} label="PROGRESS" variant="cyan" />
+            <ProgressBar value={progress} label="PROGRESS" variant="logic" />
           </div>
         </div>
 
@@ -98,7 +97,7 @@ export default function ClientGame({ game }: { game: GameMeta }) {
           </HUDPanel>
           <HUDPanel title="ABOUT GAME">
             <div className="flex items-start gap-3 text-sm">
-              <Info className="h-4 w-4 mt-0.5 text-[var(--neon-cyan)]" />
+              <Info className="h-4 w-4 mt-0.5 text-[var(--accent-logic)]" />
               <p className="text-[var(--color-muted)]">{game.description}</p>
             </div>
           </HUDPanel>

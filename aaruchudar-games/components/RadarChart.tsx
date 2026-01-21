@@ -22,7 +22,7 @@ export default function RadarChart({ values, size = 180 }: { values: { logic: nu
     <svg width={s} height={s} className="block">
       <defs>
         <linearGradient id="radarFill" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="var(--neon-cyan)" stopOpacity="0.18" />
+          <stop offset="0%" stopColor="var(--accent-logic)" stopOpacity="0.18" />
           <stop offset="100%" stopColor="var(--accent-creativity)" stopOpacity="0.18" />
         </linearGradient>
       </defs>
@@ -37,7 +37,7 @@ export default function RadarChart({ values, size = 180 }: { values: { logic: nu
           return <line key={deg} x1={cx} y1={cy} x2={p.x} y2={p.y} stroke="rgba(148,163,184,0.18)" />;
         })}
         {/* polygon */}
-        <path d={path} fill="url(#radarFill)" stroke="var(--neon-cyan)" style={{ transition: "d 800ms ease" }} />
+        <path d={path} fill="url(#radarFill)" stroke="var(--accent-logic)" style={{ transition: "d 800ms ease" }} />
       </g>
     </svg>
   );

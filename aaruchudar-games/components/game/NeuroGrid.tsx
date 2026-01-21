@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-export default function NeuroGrid({ accent = "var(--neon-cyan)", onScore }: { accent?: string; onScore: (inc: number) => void; }) {
+export default function NeuroGrid({ accent = "var(--accent-logic)", onScore }: { accent?: string; onScore: (inc: number) => void; }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [active, setActive] = useState<boolean[][]>(() => Array.from({ length: 5 }, () => Array(5).fill(false)));
 
@@ -55,7 +55,7 @@ export default function NeuroGrid({ accent = "var(--neon-cyan)", onScore }: { ac
         ctx.arc(x, y, r, 0, Math.PI * 2);
         ctx.fillStyle = on ? accent : "rgba(255,255,255,0.25)";
         ctx.shadowColor = on ? accent : "transparent";
-        ctx.shadowBlur = on ? 14 : 0;
+        ctx.shadowBlur = on ? 6 : 0;
         ctx.fill();
         ctx.shadowBlur = 0;
       }
@@ -93,7 +93,6 @@ export default function NeuroGrid({ accent = "var(--neon-cyan)", onScore }: { ac
     <div className="w-full h-full grid place-items-center">
       <div className="relative w-full max-w-[640px] aspect-square rounded-xl overflow-hidden">
         <canvas ref={canvasRef} className="w-full h-full block bg-black/20" onClick={onClick} />
-        <div className="absolute inset-0 neon-border pointer-events-none" />
       </div>
     </div>
   );

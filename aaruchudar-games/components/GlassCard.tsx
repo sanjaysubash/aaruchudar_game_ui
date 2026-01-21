@@ -17,17 +17,14 @@ type Props = ExtraProps & Omit<MotionDivProps, "className" | "children"> & {
 export default function GlassCard({ className, hoverGlow = true, children, ...props }: Props) {
   return (
     <motion.div
-      whileHover={hoverGlow ? { scale: 1.01 } : undefined}
-      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      whileHover={hoverGlow ? { scale: 1.005 } : undefined}
+      transition={{ duration: 0.4, ease: "easeOut" }}
       className={cn(
-        "glass border-neon rounded-xl p-5 relative overflow-hidden",
-        hoverGlow && "neon-border",
+        "glass border-soft rounded-xl p-5 relative overflow-hidden",
         className
       )}
       {...props}
     >
-      {/* scanlines overlay */}
-      <div className="pointer-events-none absolute inset-0 scanlines rounded-xl" />
       {children}
     </motion.div>
   );
