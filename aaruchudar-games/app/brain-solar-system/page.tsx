@@ -1,19 +1,22 @@
-"use client";
-import SolarBackground from "@/components/SolarBackground";
-import ClientOnly from "@/components/ClientOnly";
+import type { Metadata } from "next";
+import BrainSolarSystemPage from "./BrainSolarSystemPage";
 
-export default function BrainSolarSystemPage() {
-  return (
-    <main className="relative min-h-screen w-full overflow-hidden">
-      {/* 3D Solar background */}
-      <ClientOnly>
-        <SolarBackground />
-      </ClientOnly>
+/* ✅ SEO METADATA */
+export const metadata: Metadata = {
+  title: "Brain Solar System | Interactive Brain Intelligence Games",
+  description:
+    "Experience the Brain Solar System with interactive brain intelligence games designed to enhance cognitive and visual thinking skills.",
+  keywords: [
+    "brain solar system",
+    "interactive brain games",
+    "brain intelligence games",
+    "cognitive brain games",
+    "human intelligence games",
+    "visual intelligence games",
+  ],
+};
 
-      {/* Minimal overlay title */}
-      <div className="pointer-events-none absolute inset-x-0 top-12 flex justify-center">
-        <h1 className="text-white/90 text-2xl md:text-3xl font-semibold tracking-wide">Brain Solar System</h1>
-      </div>
-    </main>
-  );
+/* ✅ SERVER PAGE */
+export default function Page() {
+  return <BrainSolarSystemPage />;
 }

@@ -50,5 +50,4 @@ export default function BrainBackground() {
   );
 }
 
-// @ts-ignore
 useGLTF.preload("/brain_hologram.glb");

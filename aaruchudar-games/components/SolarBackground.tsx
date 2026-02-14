@@ -138,7 +138,7 @@ export default function SolarBackground() {
 }
 
 // Preload models
-// @ts-ignore
+// @ts-expect-error
 useGLTF.preload("/jar_brain.glb");
-// @ts-ignore
+// @ts-expect-error
 useGLTF.preload("/brain_hologram.glb");
