@@ -179,7 +179,7 @@ export default function ProfilePage() {
               RECENTLY PLAYED
             </div>
             <Link
-              href="/games"
+              href="/GamesCode"
               className="text-xs text-white/80 hover:text-white"
             >
               See all

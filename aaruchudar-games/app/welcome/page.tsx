@@ -16,7 +16,7 @@ export default function WelcomePage() {
           Train your mind with vibrant mini-games. Earn XP, unlock badges, and climb the leaderboard.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Link href="/games" className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-base font-extrabold text-black bg-white shadow-[0_12px_30px_rgba(0,0,0,0.45)] hover:translate-y-[-2px] transition-all duration-200 ease-out">
+          <Link href="/GamesCode" className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-base font-extrabold text-black bg-white shadow-[0_12px_30px_rgba(0,0,0,0.45)] hover:translate-y-[-2px] transition-all duration-200 ease-out">
             🕹️ Start Playing
           </Link>
           <Link href="/profile" className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-base font-bold text-white bg-white/10 border border-white/15 backdrop-blur hover:bg-white/15 hover:border-white/25 transition-colors duration-200 ease-out">
