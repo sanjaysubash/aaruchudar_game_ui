@@ -9,7 +9,7 @@ import logoImg from "../app/welcome/logo2.png";
 
 const links = [
   { href: "/welcome", label: "Welcome" },
-  { href: "/games", label: "Games" },
+  { href: "/GamesCode", label: "Games" },
   { href: "/leaderboard", label: "Leaderboard" },
   { href: "/profile", label: "Profile" },
   { href: "/about", label: "About" },

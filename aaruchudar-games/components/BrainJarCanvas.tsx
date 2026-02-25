@@ -1,9 +1,9 @@
-// @ts-nocheck
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import React, { Suspense, useMemo, useRef } from "react";
+import * as THREE from "three";
 
 function getCssVarNumber(name: string, fallback: number) {
   if (typeof window === "undefined") return fallback;
@@ -15,7 +15,7 @@ function getCssVarNumber(name: string, fallback: number) {
 function SceneModel({ rotate = false, scale = 1.4, offsetY = 0 }: { rotate?: boolean; scale?: number; offsetY?: number }) {
   const url = useMemo(() => new URL("./brain_hologram.glb", import.meta.url).href, []);
   const { scene } = useGLTF(url);
-  const groupRef = useRef<any>();
+  const groupRef = useRef<THREE.Group>(null);
 
   // Slow breathing scale + optional slow rotation for background mode
   useFrame((state, delta) => {
@@ -72,7 +72,7 @@ export default function BrainJarCanvas({
 
     return (
       <div className={(isInteractive ? "pointer-events-auto " : "pointer-events-none ") + "absolute inset-0 -z-10 " + (className ?? "")}> 
-        <Canvas camera={{ position: camPos as any, fov: theFov }} dpr={[1, 2]} gl={{ alpha: true }}>
+        <Canvas camera={{ position: camPos as [number, number, number], fov: theFov }} dpr={[1, 2]} gl={{ alpha: true }}>
           {/* transparent canvas for background layering */}
           <ambientLight intensity={0.35 * brightness} />
           <directionalLight position={[3, 5, 2]} intensity={0.5 * brightness} />
@@ -107,7 +107,7 @@ export default function BrainJarCanvas({
 
   return (
     <div className={"relative w-full h-[420px] md:h-[540px] panel " + (className ?? "") }>
-      <Canvas camera={{ position: camPos as any, fov: theFov }} dpr={[1, 2]}>
+      <Canvas camera={{ position: camPos as [number, number, number], fov: theFov }} dpr={[1, 2]}>
         <color attach="background" args={["#05070A"]} />
         <ambientLight intensity={0.35 * brightness} />
         <directionalLight position={[3, 5, 2]} intensity={0.5 * brightness} />
