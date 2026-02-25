@@ -1,5 +1,5 @@
 import { games } from "@/data/games";
-import ClientGame from "@/components/game/ClientGame";
+import ClientGame from "./ClientGame";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
