@@ -191,4 +191,18 @@ export const games: GameMeta[] = [
     progress: rand(),
     icon: "⚡",
   },
+  // Brain Moves – CMI Trial
+  {
+    id: "g-cmi-brain-moves",
+    slug: "brain-moves-cmi",
+    title: "Brain Moves – CMI Trial",
+    description: "Real-time cognitive-motor integration under rule switches and pressure.",
+    intelligenceType: "Speed",
+    intelligence: ["Logic", "Speed"],
+    difficulty: "High",
+    heroColor: "var(--accent-progress)",
+    xp: 220,
+    progress: rand(),
+    icon: "🎯",
+  },
 ];
